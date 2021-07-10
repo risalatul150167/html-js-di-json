@@ -1,5 +1,5 @@
 # web_perumahan
-tugas web perumahan mojokerto by Muhammad Haris Abidin
+tugas web perumahan mojokerto 
 
 Anggota Kelompok:
 1. Muhammad Haris Abidin

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="./_/bootstrap.min.css">
+	<script src="./_/jquery.min.js"></script>
+	<script src="./_/bootstrap.min.js"></script>
+
+
+	<link rel="stylesheet" href="./css/w3.css">
+	<link rel="stylesheet" href="./css/blue.css">
+	<link rel="stylesheet" href="./css/custom.css">
+	<style>
+		table {
+			table-layout: fixed;
+		display: block;
+		overflow-x: auto;
+		white-space: nowrap;
+		}
+
+		table tbody {
+    	display: table;
+    	width: 100%;
+		}
+	</style>
+
+	<title>Dewa Perumahan</title>
+</head>
+
+<body>
+	<div class="container" >
+    <h1>Dewa Perumahan Mojokerto</h1>
+	<form role="form">
+        <div class="form-group">
+          <input type="input" class="form-control input-lg" id="txt-search" placeholder="Ketik *123#">
+        </div>
+	</form>
+	
+	</div>
+	<br><br>
+	<div id="filter-records"></div>
+</body>
+</html>
+<script type="text/javascript">
+	$(document).ready(function(){
+    
+	var data=
+			[
+				{"no":"1","nama_perumahan":"Graha Majapahit 3","nama_developer":"Rumah Hunian Khusus","nama_cluster":"Cluster Graha Majapahit","luas_tanah":"78","panjang_tanah":"7","lebar_tanah":"68","luas_bangunan":"40","harga_jual":"335000000","jumlah_lantai":"1","jumlah_kamar_mandi":"1","jumlah_kamar_tidur":"2","ada_dapur":"1","ada_canopy":"1","ada_pagar":"0","ada_taman":"1","ada_one_gate_system":"1","sudah_smart_home":"1","keabsahan":"SHM","biasa_KPR":"1","jenis_air":"PDAM","lebar_jalan":"5","jarak_bandara_terdekat":"55","jarak_rumah_sakit_terdekat":"2.5","jarak_pusat_kebutuhan_pokok":"1","jarak_pusat_kota":"4.6","tahun_data":"2021"},
+				{"no":"2","nama_perumahan":"Dian Kencana Mojokerto","nama_developer":"Real Estate","nama_cluster":"Puri Widya Kencana","luas_tanah":"66","panjang_tanah":"6","lebar_tanah":"66","luas_bangunan":"30","harga_jual":"180000000","jumlah_lantai":"1","jumlah_kamar_mandi":"1","jumlah_kamar_tidur":"2","ada_dapur":"1","ada_canopy":"1","ada_pagar":"0","ada_taman":"1","ada_one_gate_system":"0","sudah_smart_home":"1","keabsahan":"SHM","biasa_KPR":"1","jenis_air":"PDAM","lebar_jalan":"3","jarak_bandara_terdekat":"49","jarak_rumah_sakit_terdekat":"4.9","jarak_pusat_kebutuhan_pokok":"1.9","jarak_pusat_kota":"3.5","tahun_data":"2021"},
+				{"no":"3","nama_perumahan":"Bumi Majapahit","nama_developer":"Griya Mamdani","nama_cluster":"Graha Majapahit","luas_tanah":"60","panjang_tanah":"7","lebar_tanah":"56","luas_bangunan":"30","harga_jual":"150500000","jumlah_lantai":"1","jumlah_kamar_mandi":"1","jumlah_kamar_tidur":"2","ada_dapur":"1","ada_canopy":"1","ada_pagar":"0","ada_taman":"1","ada_one_gate_system":"1","sudah_smart_home":"0","keabsahan":"SHM","biasa_KPR":"1","jenis_air":"PDAM","lebar_jalan":"5","jarak_bandara_terdekat":"12","jarak_rumah_sakit_terdekat":"3.9","jarak_pusat_kebutuhan_pokok":"1.5","jarak_pusat_kota":"12","tahun_data":"2021"},
+				{"no":"4","nama_perumahan":"Green Jayanegara Residence","nama_developer":"PT. Artha Mahesa Bumi Indah","nama_cluster":"PT. Artha Mahesa Bumi Indah","luas_tanah":"56","panjang_tanah":"7","lebar_tanah":"73","luas_bangunan":"45","harga_jual":"875000000","jumlah_lantai":"1","jumlah_kamar_mandi":"1","jumlah_kamar_tidur":"2","ada_dapur":"0","ada_canopy":"0","ada_pagar":"0","ada_taman":"1","ada_one_gate_system":"0","sudah_smart_home":"1","keabsahan":"SHM","biasa_KPR":"0","jenis_air":"PDAM","lebar_jalan":"3","jarak_bandara_terdekat":"54","jarak_rumah_sakit_terdekat":"2.6","jarak_pusat_kebutuhan_pokok":"2","jarak_pusat_kota":"4.2","tahun_data":"2021"},
+				{"no":"5","nama_perumahan":"Griya Permata Meri","nama_developer":"Gota Mulya Group","nama_cluster":"Gota Mulya Group","luas_tanah":"72","panjang_tanah":"4","lebar_tanah":"63","luas_bangunan":"36","harga_jual":"295000000","jumlah_lantai":"1","jumlah_kamar_mandi":"1","jumlah_kamar_tidur":"2","ada_dapur":"1","ada_canopy":"1","ada_pagar":"0","ada_taman":"1","ada_one_gate_system":"0","sudah_smart_home":"0","keabsahan":"SHM","biasa_KPR":"1","jenis_air":"PDAM","lebar_jalan":"3","jarak_bandara_terdekat":"52","jarak_rumah_sakit_terdekat":"46","jarak_pusat_kebutuhan_pokok":"1","jarak_pusat_kota":"2","tahun_data":"2021"},
+				{"no":"6","nama_perumahan":"Rezanna Garden 6","nama_developer":"N/A","nama_cluster":"Rezanna Garden 6","luas_tanah":"60","panjang_tanah":"N/A","lebar_tanah":"N/A","luas_bangunan":"30","harga_jual":"144900000","jumlah_lantai":"2","jumlah_kamar_mandi":"1","jumlah_kamar_tidur":"2","ada_dapur":"0","ada_canopy":"0","ada_pagar":"0","ada_taman":"0","ada_one_gate_system":"0","sudah_smart_home":"0","keabsahan":"SHM","biasa_KPR":"1","jenis_air":"PDAM","lebar_jalan":"3","jarak_bandara_terdekat":"N/A","jarak_rumah_sakit_terdekat":"N/A","jarak_pusat_kebutuhan_pokok":"0.4","jarak_pusat_kota":"0.1","tahun_data":"2021"},
+				{"no":"7","nama_perumahan":"Kemlagi","nama_developer":"Budi Pro","nama_cluster":"Kemlagi","luas_tanah":"60","panjang_tanah":"N/A","lebar_tanah":"N/A","luas_bangunan":"30","harga_jual":"150500000","jumlah_lantai":"1","jumlah_kamar_mandi":"1","jumlah_kamar_tidur":"2","ada_dapur":"0","ada_canopy":"0","ada_pagar":"1","ada_taman":"0","ada_one_gate_system":"0","sudah_smart_home":"1","keabsahan":"SHM","biasa_KPR":"1","jenis_air":"PDAM","lebar_jalan":"3","jarak_bandara_terdekat":"N/A","jarak_rumah_sakit_terdekat":"N/A","jarak_pusat_kebutuhan_pokok":"N/A","jarak_pusat_kota":"0.2","tahun_data":"2021"},
+				{"no":"8","nama_perumahan":"Djati Garden Subsidi DKT Tol Sumo","nama_developer":"Budi Pro","nama_cluster":"Djati Garden Subsidi DKT Tol Sumo","luas_tanah":"60","panjang_tanah":"N/A","lebar_tanah":"N/A","luas_bangunan":"30","harga_jual":"150000000","jumlah_lantai":"1","jumlah_kamar_mandi":"1","jumlah_kamar_tidur":"2","ada_dapur":"0","ada_canopy":"0","ada_pagar":"0","ada_taman":"0","ada_one_gate_system":"1","sudah_smart_home":"1","keabsahan":"SHM","biasa_KPR":"1","jenis_air":"PDAM","lebar_jalan":"3","jarak_bandara_terdekat":"N/A","jarak_rumah_sakit_terdekat":"N/A","jarak_pusat_kebutuhan_pokok":"N/A","jarak_pusat_kota":"0.2","tahun_data":"2021"},
+				{"no":"9","nama_perumahan":"Grand Zam Zam Regency Mojokerto","nama_developer":"PT. Budi Luhur","nama_cluster":"Grand Zam Zam Regency Mojokerto","luas_tanah":"66","panjang_tanah":"N/A","lebar_tanah":"N/A","luas_bangunan":"36","harga_jual":"195000000","jumlah_lantai":"1","jumlah_kamar_mandi":"1","jumlah_kamar_tidur":"2","ada_dapur":"0","ada_canopy":"0","ada_pagar":"0","ada_taman":"1","ada_one_gate_system":"0","sudah_smart_home":"0","keabsahan":"SHGB","biasa_KPR":"1","jenis_air":"PDAM","lebar_jalan":"4","jarak_bandara_terdekat":"N/A","jarak_rumah_sakit_terdekat":"N/A","jarak_pusat_kebutuhan_pokok":"N/A","jarak_pusat_kota":"N/A","tahun_data":"2021"},
+				{"no":"10","nama_perumahan":"Perumahan Bhineka Land","nama_developer":"Bhineka Land","nama_cluster":"Perumahan Mojokerto","luas_tanah":"60","panjang_tanah":"N/A","lebar_tanah":"N/A","luas_bangunan":"30","harga_jual":"199000000","jumlah_lantai":"1","jumlah_kamar_mandi":"1","jumlah_kamar_tidur":"1","ada_dapur":"0","ada_canopy":"0","ada_pagar":"0","ada_taman":"0","ada_one_gate_system":"1","sudah_smart_home":"0","keabsahan":"N/A","biasa_KPR":"1","jenis_air":"PDAM","lebar_jalan":"3","jarak_bandara_terdekat":"N/A","jarak_rumah_sakit_terdekat":"1.5","jarak_pusat_kebutuhan_pokok":"N/A","jarak_pusat_kota":"N/A","tahun_data":"2021"},
+				{"no":"11","nama_perumahan":"Bukit Mentari Brayu","nama_developer":"N/A","nama_cluster":"Bukit Mentari Brayu","luas_tanah":"60","panjang_tanah":"10","lebar_tanah":"6","luas_bangunan":"22","harga_jual":"221000000","jumlah_lantai":"1","jumlah_kamar_mandi":"1","jumlah_kamar_tidur":"1","ada_dapur":"1","ada_canopy":"1","ada_pagar":"1","ada_taman":"1","ada_one_gate_system":"0","sudah_smart_home":"0","keabsahan":"SHGB","biasa_KPR":"0","jenis_air":"PDAM","lebar_jalan":"N/A","jarak_bandara_terdekat":"N/A","jarak_rumah_sakit_terdekat":"N/A","jarak_pusat_kebutuhan_pokok":"N/A","jarak_pusat_kota":"N/A","tahun_data":"2021"},
+				{"no":"12","nama_perumahan":"Graha Sativa","nama_developer":"N/A","nama_cluster":"Graha Sativa","luas_tanah":"80","panjang_tanah":"N/A","lebar_tanah":"N/A","luas_bangunan":"40","harga_jual":"353000000","jumlah_lantai":"1","jumlah_kamar_mandi":"1","jumlah_kamar_tidur":"2","ada_dapur":"1","ada_canopy":"1","ada_pagar":"1","ada_taman":"1","ada_one_gate_system":"0","sudah_smart_home":"0","keabsahan":"SHM","biasa_KPR":"1","jenis_air":"PDAM","lebar_jalan":"N/A","jarak_bandara_terdekat":"N/A","jarak_rumah_sakit_terdekat":"N/A","jarak_pusat_kebutuhan_pokok":"N/A","jarak_pusat_kota":"N/A","tahun_data":"2021"},
+				{"no":"13","nama_perumahan":"Gondang Residence","nama_developer":"N/A","nama_cluster":"Gondang Residence","luas_tanah":"105","panjang_tanah":"N/A","lebar_tanah":"N/A","luas_bangunan":"55","harga_jual":"403000000","jumlah_lantai":"1","jumlah_kamar_mandi":"1","jumlah_kamar_tidur":"2","ada_dapur":"1","ada_canopy":"1","ada_pagar":"1","ada_taman":"1","ada_one_gate_system":"0","sudah_smart_home":"0","keabsahan":"SHGB","biasa_KPR":"0","jenis_air":"PDAM","lebar_jalan":"N/A","jarak_bandara_terdekat":"N/A","jarak_rumah_sakit_terdekat":"N/A","jarak_pusat_kebutuhan_pokok":"N/A","jarak_pusat_kota":"N/A","tahun_data":"2021"},
+				{"no":"14","nama_perumahan":"d'Ahsana property sayriah","nama_developer":"N/A","nama_cluster":"d'Ahsana property sayriah","luas_tanah":"60","panjang_tanah":"N/A","lebar_tanah":"N/A","luas_bangunan":"65","harga_jual":"335000000","jumlah_lantai":"2","jumlah_kamar_mandi":"2","jumlah_kamar_tidur":"3","ada_dapur":"1","ada_canopy":"1","ada_pagar":"1","ada_taman":"1","ada_one_gate_system":"0","sudah_smart_home":"0","keabsahan":"SHM","biasa_KPR":"1","jenis_air":"PDAM","lebar_jalan":"N/A","jarak_bandara_terdekat":"N/A","jarak_rumah_sakit_terdekat":"N/A","jarak_pusat_kebutuhan_pokok":"N/A","jarak_pusat_kota":"N/A","tahun_data":"2021"},
+				{"no":"15","nama_perumahan":"GREEN STAR RESIDENCE BRANGKAL","nama_developer":"N/A","nama_cluster":"Green Star Residence Brankal","luas_tanah":"66","panjang_tanah":"N/A","lebar_tanah":"N/A","luas_bangunan":"30","harga_jual":"140000000","jumlah_lantai":"1","jumlah_kamar_mandi":"1","jumlah_kamar_tidur":"2","ada_dapur":"0","ada_canopy":"0","ada_pagar":"0","ada_taman":"0","ada_one_gate_system":"0","sudah_smart_home":"0","keabsahan":"N/A","biasa_KPR":"1","jenis_air":"SUMUR BOR","lebar_jalan":"N/A","jarak_bandara_terdekat":"N/A","jarak_rumah_sakit_terdekat":"N/A","jarak_pusat_kebutuhan_pokok":"N/A","jarak_pusat_kota":"N/A","tahun_data":"2021"}
+			];
+
+
+$('#txt-search').keyup(function(){
+            var searchField = $(this).val();
+			if(searchField === '')  {
+				$('#filter-records').html('');
+				return;
+			}
+			
+            var regex = new RegExp(searchField, "i");
+            var output ='<div>';
+				output +='<table id="data" class="w3-table-all w3-centered w3-hoverable">';
+				output +='<tr id="blue">';
+				output +='<th>No </th>';
+				output +='<th>Nama Perumahan</th>';
+				output +='<th>Nama Developer</th>';
+				output +='<th>Nama Cluster</th>';
+				output +='<th>Luas Tanah</th>';
+				output +='<th>Panjang Tanah</th>';
+				output +='<th>Lebar Tanah</th>';
+				output +='<th>luas bangunan</th>';
+				output +='<th>harga jual</th>';
+				output +='<th>jumlah lantai</th>';
+				output +='<th>jumlah kamar mandi</th>';
+				output +='<th>jumlah kamar tidur</th>';
+				output +='<th>ada dapur</th>';
+				output +='<th>ada canopy</th>';
+				output +='<th>ada pagar</th>';
+				output +='<th>ada taman</th>';
+				output +='<th>ada one gate system</th>';
+				output +='<th>sudah smart home</th>';
+				output +='<th>keabsahan</th>';
+				output +='<th>biasa KPR</th>';
+				output +='<th>jenis air</th>';
+				output +='<th>lebar jalan</th>';
+				output +='<th>jarak bandara terdekat</th>';
+				output +='<th>jarak rumah sakit terdekat</th>';
+				output +='<th>jarak pusat kebutuhan pokok</th>';
+				output +='<th>jarak pusat kota</th>';
+				output +='<th>tahun data</th>';
+				output +='</tr>';
+            var count = 1;
+				$.each(data, function(key, val){
+				if ((val.nama_perumahan.search(regex) != -1) ||
+					(val.nama_developer.search(regex) != -1) ||
+					(val.nama_cluster.search(regex) != -1) ||
+					(val.luas_tanah.search(regex) != -1) ||
+					(val.panjang_tanah.search(regex) != -1) ||
+					(val.lebar_tanah.search(regex) != -1) ||
+					(val.luas_bangunan.search(regex) != -1) ||
+					(val.harga_jual.search(regex) != -1) ||
+					(val.jumlah_lantai.search(regex) != -1) ||
+					(val.jumlah_kamar_mandi.search(regex) != -1) ||
+					(val.jumlah_kamar_tidur.search(regex) != -1) ||
+					(val.ada_dapur.search(regex) != -1) ||
+					(val.ada_canopy.search(regex) != -1) ||
+					(val.ada_pagar.search(regex) != -1) ||
+					(val.ada_taman.search(regex) != -1) ||
+					(val.ada_one_gate_system.search(regex) != -1) ||
+					(val.sudah_smart_home.search(regex) != -1) ||
+					(val.keabsahan.search(regex) != -1) ||
+					(val.biasa_KPR.search(regex) != -1) ||
+					(val.jenis_air.search(regex) != -1) ||
+					(val.lebar_jalan.search(regex) != -1) ||
+					(val.jarak_bandara_terdekat.search(regex) != -1) ||
+					(val.jarak_rumah_sakit_terdekat.search(regex) != -1) ||
+					(val.jarak_pusat_kebutuhan_pokok.search(regex) != -1) ||
+					(val.jarak_pusat_kota.search(regex) != -1) ||
+					(val.tahun_data.search(regex) != -1)
+					) {
+					
+					output +='<tr>';
+					output +='<td>'+val.no+'</td>';
+					output +='<td>'+val.nama_perumahan+'</td>';
+					output +='<td>'+val.nama_developer+'</td>';
+					output +='<td>'+val.nama_cluster+'</td>';
+					output +='<td>'+val.luas_tanah+'</td>';
+					output +='<td>'+val.panjang_tanah+'</td>';
+					output +='<td>'+val.lebar_tanah+'</td>';
+					output +='<td>'+val.luas_bangunan+'</td>';
+					output +='<td>'+val.harga_jual+'</td>';
+					output +='<td>'+val.jumlah_lantai+'</td>';
+					output +='<td>'+val.jumlah_kamar_mandi+'</td>';
+					output +='<td>'+val.jumlah_kamar_tidur+'</td>';
+					output +='<td>'+val.ada_dapur+'</td>';
+					output +='<td>'+val.ada_canopy+'</td>';
+					output +='<td>'+val.ada_pagar+'</td>';
+					output +='<td>'+val.ada_taman+'</td>';
+					output +='<td>'+val.ada_one_gate_system+'</td>';
+					output +='<td>'+val.sudah_smart_home+'</td>';
+					output +='<td>'+val.keabsahan+'</td>';
+					output +='<td>'+val.biasa_KPR+'</td>';
+					output +='<td>'+val.jenis_air+'</td>';
+					output +='<td>'+val.lebar_jalan+'</td>';
+					output +='<td>'+val.jarak_bandara_terdekat+'</td>';
+					output +='<td>'+val.jarak_rumah_sakit_terdekat+'</td>';
+					output +='<td>'+val.jarak_pusat_kebutuhan_pokok+'</td>';
+					output +='<td>'+val.jarak_pusat_kota+'</td>';
+					output +='<td>'+val.tahun_data+'</td>';
+					output +='</tr>';
+				  
+					if(count%2 == 0){
+					output += '';
+					}
+					count++;
+				}
+					
+				});
+				output += '</table></div>';
+				$('#filter-records').html(output);
+        });
+	});
+</script>
